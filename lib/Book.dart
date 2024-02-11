@@ -17,12 +17,12 @@ class Book{
 
   factory Book.fromJson(Map<String, dynamic> json){
     return Book(
-      id: json['id'],
-      title: json['title'],
-      author: json['author'],
-      category: json['category'],
-      description: json['description'],
-      price: json['price']
+      id: json['id'] ?? 8,
+      title: json['title'] ?? "ddd",
+      author: json['author'] ?? "hhh",
+      category: json['category'] ?? " fff",
+      description: json['description'] ?? "ddd",
+      price: json['price'] ?? 0
     );
   }
   Map<String, dynamic> toMap() {

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:bookstore/bookList/bookList_events.dart';
 import 'package:bookstore/bookList/bookList_states.dart';
 import 'package:bookstore/book_service.dart';
@@ -9,6 +11,12 @@ class BookListBloc extends Bloc<BookListEvent, BookListState>{
   BookListBloc(this._bookService):super(BookListLoadingState()){
     on<LoadBookListEvent>((event, emit) async {
       emit(BookListLoadingState());
+      try{
+        final bookList = await _bookService.getBooks();
+        emit(BookListLoadedState(bookList));
+      }catch(e){
+        emit(BookListErrorState(e.toString()));
+      }
     });
   }
 }
