@@ -1,12 +1,14 @@
-import 'package:bookstore/bookList/bookList_bloc.dart';
-import 'package:bookstore/bookList/bookList_events.dart';
-import 'package:bookstore/bookList/bookList_states.dart';
-import 'package:bookstore/book_service.dart';
+import 'package:bookstore/widget/bookList/bookList_bloc.dart';
+
+import 'package:bookstore/services/book_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Book.dart';
+
+import '../../models/Book.dart';
+import 'bookList_events.dart';
+import 'bookList_states.dart';
 
 class BookList extends StatefulWidget{
   @override

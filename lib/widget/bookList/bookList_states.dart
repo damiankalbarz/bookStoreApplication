@@ -1,7 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../Book.dart';
+
+import '../../models/Book.dart';
+
+
 
 @immutable
 abstract class BookListState extends Equatable{}
