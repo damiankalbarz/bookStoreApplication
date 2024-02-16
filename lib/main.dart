@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: RepositoryProvider(
         create: (context) => BookService(),
-        child: LoginPage(),
+        child: MyHomePage(),
       ),
     );
   }

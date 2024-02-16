@@ -1,12 +1,14 @@
 import 'package:bookstore/widget/bookList/bookList_bloc.dart';
 
 import 'package:bookstore/services/book_service.dart';
+import 'package:bookstore/widget/bookPrezentation/bookPrezentation_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 import '../../models/Book.dart';
+
 import 'bookList_events.dart';
 import 'bookList_states.dart';
 
@@ -40,6 +42,11 @@ class _BookListState extends State<BookList> {
                   elevation: 4,
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: ListTile(
+                    onTap: () {
+                      print(bookList[index].id);
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BookPrezentation(id: bookList[index].id),),);
+                    },
                     title: Text("${bookList[index].title} - ${bookList[index].author}"),
                     subtitle: Text(bookList[index].category),
 

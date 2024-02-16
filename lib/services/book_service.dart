@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -90,33 +90,30 @@ class BookService {
     }
   }
 
-  Future<void> postBook() async {
+  Future<Book> getBook(int id) async {
+    const baseURL = "http://localhost:8080/api/book/";
     try {
-      Book book = Book(
-        id: 5,
-        title: "tttt",
-        author: "ttt",
-        category: "hhh",
-        description: "jjj",
-        price: 15,
+      List<Book> bookList;
+      print("xdddg");
+      var response = await http.get(
+        Uri.parse(baseURL+id.toString()),
       );
-      var response = await _dio.post(
-        'http://localhost:9191/addBooks',
-        data: book.toMap(),
-        options: Options(
-          headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
-          },
-        ),
-      );
-
       if (response.statusCode == 200) {
-        print('classes add successfully');
+        var jsonResponse = json.decode(response.body);
+        print(jsonResponse);
+        Book book = Book.fromJson(jsonResponse);
+        return book;
       } else {
-        print('classes add failed with status: ${response.statusCode}');
+        print("Server response: ${response.statusCode}");
+        print("Response data: ${response.body}");
+        throw Exception(
+            "Failed to load books. Status code: ${response.statusCode}");
       }
     } catch (e) {
-      throw ('Error during change classes: $e');
+      print('Error: $e');
+      throw Exception("Failed to load books. Error: $e");
     }
   }
+
+
 }
