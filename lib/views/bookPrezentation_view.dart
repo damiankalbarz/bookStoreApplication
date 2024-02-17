@@ -17,6 +17,9 @@ class _BookPrezentationViewState extends State<BookPrezentationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text("Boook"),
+        ),
       body:
         SingleChildScrollView(
           child: Column(

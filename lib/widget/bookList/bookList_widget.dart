@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/Book.dart';
 
+import '../../views/bookPrezentation_view.dart';
 import 'bookList_events.dart';
 import 'bookList_states.dart';
 
@@ -39,15 +40,14 @@ class _BookListState extends State<BookList> {
               itemBuilder: (_,index){
                 return Card(
                   color: Colors.blue,
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  elevation: 3,
+                  margin: const EdgeInsets.symmetric(vertical: 5),
                   child: ListTile(
                     onTap: () {
-                      print(bookList[index].id);
                       Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BookPrezentation(id: bookList[index].id),),);
+                      MaterialPageRoute(builder: (context) => BookPrezentationView(id: bookList[index].id),),);
                     },
-                    title: Text("${bookList[index].title} - ${bookList[index].author}"),
+                    title: Text("${bookList[index].title}    -     ${bookList[index].author}"),
                     subtitle: Text(bookList[index].category),
 
                   )

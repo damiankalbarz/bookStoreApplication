@@ -37,7 +37,7 @@ class _BookPrezentationState extends State<BookPrezentation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( body: BlocConsumer(
+    return Container(child: BlocConsumer(
       bloc: _bookPrezentationBloc,
         listenWhen: (previous, current) => current is BookPrezentationLoadingState,
         buildWhen: (previous, current) => current is! BookPrezentationLoadingState,
@@ -99,35 +99,6 @@ class _BookPrezentationState extends State<BookPrezentation> {
     }
       }
     ));
-
-      /*
-      create: (context) => BookPrezentationBloc(
-        RepositoryProvider.of<BookService>(context!),id!
-      )..add(LoadBookPrezentationEvent()),
-      child: Scaffold(
-        body: BlocBuilder<BookPrezentationBloc,BookPrezentationState>(
-          builder: (context, state){
-            if(state is BookPrezentationLoadingState){
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
-            if(state is BookPrezentationLoadedState){
-              Book book = state.book;
-              return Container(
-                child: Text("dsfsf"),
-              );
-            }
-
-            if(state is BookPrezentationErrorState){
-              return(Center( child: Text("Bład"),));
-            }
-            return Container();
-          }
-        )
-
-    );*/
   }
 
 }
