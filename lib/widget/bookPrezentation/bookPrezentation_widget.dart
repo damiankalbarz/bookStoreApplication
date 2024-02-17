@@ -54,18 +54,35 @@ class _BookPrezentationState extends State<BookPrezentation> {
           return Container(
             child: Column(
               children: [
-                Text(book.title),
-                Text(book.author),
-                Text(book.category),
-                Text(book.description),
+                SizedBox(height: 20,),
+                Text(book.title, style: TextStyle(fontSize: 40),),
+                Text(book.author, style: TextStyle(fontSize: 20)),
+                SizedBox(height: 5,),
+                Text(book.category, style: TextStyle(fontSize: 13)),
+                SizedBox(height: 10,),
+                Divider(
+                  height: 20, // Wysokość kreski
+                  thickness: 2, // Grubość kreski
+                  color: Colors.black, // Kolor kreski
+                ),
+                SizedBox(height: 10,),
+                Text(book.description, style: TextStyle(fontSize: 14)),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.thumb_up_alt_outlined)),
+                    IconButton(onPressed: (){
+                      _bookServise.addLike(book.id);
+                    }, icon: Icon(Icons.thumb_up_alt_outlined)),
                     Text(book.likeCount.toString()),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.thumb_down_alt_outlined)),
-                    Text(book.likeCount.toString()),
+                    SizedBox(width: 20,),
+                    IconButton(onPressed: (){
+                      _bookServise.addHate(book.id);
+                      },
+                        icon: Icon(Icons.thumb_down_alt_outlined)),
+                    Text(book.hateCount.toString()),
                   ],
-                )
+                ),
+
 
 
               ],

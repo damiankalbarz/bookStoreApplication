@@ -116,4 +116,45 @@ class BookService {
   }
 
 
+  Future<void> addLike(int id) async {
+    const baseURL = "http://localhost:8080/api/likeBook/";
+    try {
+           var response = await http.post(
+        Uri.parse(baseURL+id.toString()),
+      );
+      if (response.statusCode == 200) {
+
+        print("like");
+      } else {
+        print("Server response: ${response.statusCode}");
+        print("Response data: ${response.body}");
+        throw Exception(
+            "Failed to load books. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error: $e');
+      throw Exception("Failed to load books. Error: $e");
+    }
+  }
+
+  Future<void> addHate(int id) async {
+    const baseURL = "http://localhost:8080/api/hateBook/";
+    try {
+      var response = await http.post(
+        Uri.parse(baseURL + id.toString()),
+      );
+      if (response.statusCode == 200) {
+        print("hate");
+      } else {
+        print("Server response: ${response.statusCode}");
+        print("Response data: ${response.body}");
+        throw Exception(
+            "Failed to load books. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error: $e');
+      throw Exception("Failed to load books. Error: $e");
+    }
+  }
+
 }
