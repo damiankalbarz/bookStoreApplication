@@ -25,8 +25,7 @@ class _BookListState extends State<BookList> {
       create: (context) => BookListBloc(
         RepositoryProvider.of<BookService>(context),
       )..add(LoadBookListEvent()),
-      child: Scaffold(
-        body: BlocBuilder<BookListBloc,BookListState>(
+      child:  BlocBuilder<BookListBloc,BookListState>(
           builder: (context, state){
             if(state is BookListLoadingState){
               return const Center(
@@ -61,7 +60,6 @@ class _BookListState extends State<BookList> {
             return Container();
           }
         )
-      )
     );
   }
 

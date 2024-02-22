@@ -1,4 +1,5 @@
 import 'package:bookstore/services/book_service.dart';
+import 'package:bookstore/views/books_view.dart';
 import 'package:bookstore/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: RepositoryProvider(
         create: (context) => BookService(),
-        child: MyHomePage(),
+        child: BooksPage(),
       ),
     );
   }
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Container(
               height: 0.5 * MediaQuery.of(context).size.height,
-              child: BookList(),
+              child: BooksPage(),
             ),
           ],
         ),

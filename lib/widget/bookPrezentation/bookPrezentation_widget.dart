@@ -82,9 +82,6 @@ class _BookPrezentationState extends State<BookPrezentation> {
                     Text(book.hateCount.toString()),
                   ],
                 ),
-
-
-
               ],
             )
 
