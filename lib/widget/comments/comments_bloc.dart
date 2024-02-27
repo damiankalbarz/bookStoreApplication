@@ -7,20 +7,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'comments_events.dart';
 import 'comments_states.dart';
 
-class BookPrezentationBloc extends Bloc<BookPrezentationEvent, BookPrezentationState>{
+class CommentsBloc extends Bloc<CommentsEvent, CommentsState>{
   final BookService _bookService;
   final int id;
 
-  BookPrezentationBloc(this._bookService,this.id):super(BookPrezentationLoadingState()){
-    on<LoadBookPrezentationEvent>((event, emit) async {
-      emit(BookPrezentationLoadingState());
+  CommentsBloc(this._bookService,this.id):super(CommentsLoadingState()){
+    on<LoadCommentsPrezentationEvent>((event, emit) async {
+      emit(CommentsLoadingState());
       try{
-        print("dddd");
         print(id);
         final book = await _bookService.getBook(id);
-        emit(BookPrezentationLoadedState(book));
+        emit(CommentsLoadedState(book.comments));
       }catch(e){
-        emit(BookPrezentationErrorState(e.toString()));
+        emit(CommentsErrorState(e.toString()));
       }
     });
   }

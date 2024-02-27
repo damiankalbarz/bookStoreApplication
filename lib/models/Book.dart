@@ -36,7 +36,6 @@ class Book{
       likeCount: json['likeCount'],
       hateCount: json['hateCount'],
       comments: comments
-
     );
   }
   Map<String, dynamic> toMap() {

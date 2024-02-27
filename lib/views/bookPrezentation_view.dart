@@ -1,3 +1,4 @@
+import 'package:bookstore/widget/comments/comments_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/bookPrezentation/bookPrezentation_widget.dart';
@@ -45,6 +46,10 @@ class _BookPrezentationViewState extends State<BookPrezentationView> {
                   icon: Icon(Icons.add_circle, size: 35,)),
             ],
           ),
+          SizedBox(height: 20,),
+          Container(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: CommentsPrezentation(id: id))
         ],
       )),
     );

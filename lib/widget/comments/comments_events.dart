@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 @immutable
-abstract class BookPrezentationEvent extends Equatable{
-  const BookPrezentationEvent();
+abstract class CommentsEvent extends Equatable{
+  const CommentsEvent();
 }
 
-class LoadBookPrezentationEvent extends BookPrezentationEvent{
+class LoadCommentsPrezentationEvent extends CommentsEvent{
   @override
   // TODO: implement props
   List<Object?> get props => [];

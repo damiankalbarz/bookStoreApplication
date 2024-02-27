@@ -3,32 +3,35 @@ import 'package:flutter/material.dart';
 
 
 import '../../models/Book.dart';
+import '../../models/Comment.dart';
 
 
 
 @immutable
-abstract class BookPrezentationState extends Equatable{}
+abstract class CommentsState extends Equatable{}
 
-class BookPrezentationLoadingState extends BookPrezentationState{
+class CommentsLoadingState extends CommentsState{
   @override
   // TODO: implement props
   List<Object?> get props => [];
 }
 
-class BookPrezentationLoadedState extends BookPrezentationState{
-  final Book book;
+class CommentsLoadedState extends CommentsState{
+  final List<Comment> comments;
 
-  BookPrezentationLoadedState(this.book);
+  CommentsLoadedState(this.comments);
 
-  List<Object?> get props => [book];
+
+
+  List<Object?> get props => [comments];
 
 }
 
 
-class BookPrezentationErrorState extends BookPrezentationState{
+class CommentsErrorState extends CommentsState{
   final String error;
 
-  BookPrezentationErrorState(this.error);
+  CommentsErrorState(this.error);
 
   List<Object?> get props => [error];
 
