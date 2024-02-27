@@ -94,7 +94,6 @@ class BookService {
     const baseURL = "http://localhost:8080/api/book/";
     try {
       List<Book> bookList;
-      print("xdddg");
       var response = await http.get(
         Uri.parse(baseURL+id.toString()),
       );
