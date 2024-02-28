@@ -12,59 +12,7 @@ import '../models/Book.dart';
 class BookService {
   final Dio _dio = Dio();
 
-/*
-  Future<List<Book>> getBooks() async {
-    const baseURL = "http://localhost:8080/books";
 
-    try {
-      List<Book> bookList;
-
-      Response response = await Dio().get(baseURL);
-
-      if (response.statusCode == 200) {
-        var jsonResponse = response.data;
-        print("jsonResponse: $jsonResponse");
-
-        bookList = List<Book>.from(jsonResponse.map((item) => Book.fromJson(item)));
-        return bookList;
-      } else {
-        print("Server response: ${response.statusCode}");
-        print("Response data: ${response.data}");
-        throw Exception("Failed to load books. Status code: ${response.statusCode}");
-      }
-    } catch (e) {
-      print('Error: $e');
-      throw Exception("Failed to load books. Error: $e");
-    }
-  }
-
- */
-/*
-  Future<List<Book>> getBooks() async {
-    const baseURL = "http://localhost:8080/api/books";
-    try {
-      List<Book> bookList;
-      final Response response = await _dio.get(baseURL);
-      if (response.statusCode == 200) {
-        var jsonResponse = json.decode(response.data);
-        print("jsonResponse");
-        bookList = List<Book>.from(jsonResponse.map((item) => Book.fromJson(item)));
-        return bookList;
-      }
-      else {
-        print("Server response: ${response.statusCode}");
-        print("Response data: ${response.data}");
-        throw Exception("Failed to load books. Status code: ${response.statusCode}");
-      }
-    }
-    catch (e) {
-      print('Error: $e');
-      throw Exception("Failed to load books. Error: $e");
-    }
-  }
-
-
-*/
   Future<List<Book>> getBooks() async {
     const baseURL = "http://localhost:8080/api/books";
     try {
@@ -118,7 +66,7 @@ class BookService {
   Future<void> addLike(int id) async {
     const baseURL = "http://localhost:8080/api/likeBook/";
     try {
-           var response = await http.post(
+        var response = await http.post(
         Uri.parse(baseURL+id.toString()),
       );
       if (response.statusCode == 200) {
@@ -141,6 +89,48 @@ class BookService {
     try {
       var response = await http.post(
         Uri.parse(baseURL + id.toString()),
+      );
+      if (response.statusCode == 200) {
+        print("hate");
+      } else {
+        print("Server response: ${response.statusCode}");
+        print("Response data: ${response.body}");
+        throw Exception(
+            "Failed to load books. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error: $e');
+      throw Exception("Failed to load books. Error: $e");
+    }
+  }
+/*
+  Future<void> addLike(int id) async {
+    const baseURL = "http://localhost:8080/api/likeBook/";
+    try {
+      var response = await http.post(
+        Uri.parse(baseURL+id.toString()),
+      );
+      if (response.statusCode == 200) {
+
+        print("like");
+      } else {
+        print("Server response: ${response.statusCode}");
+        print("Response data: ${response.body}");
+        throw Exception(
+            "Failed to load books. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error: $e');
+      throw Exception("Failed to load books. Error: $e");
+    }
+  }
+*/
+  Future<void> addComment(int id, String comment) async {
+    const baseURL = "http://localhost:8080/api/addComment/";
+    try {
+      var response = await http.put(
+        Uri.parse(baseURL + id.toString(),),
+        body: jsonEncode(comment)
       );
       if (response.statusCode == 200) {
         print("hate");

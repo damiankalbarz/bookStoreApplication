@@ -24,6 +24,7 @@ class _BookPrezentationState extends State<BookPrezentation> {
   late final BookPrezentationBloc _bookPrezentationBloc;
   late BookService _bookServise;
   _BookPrezentationState({required this.id}) {}
+  TextEditingController commentController = TextEditingController();
 
   @override
   void initState() {
@@ -80,6 +81,30 @@ class _BookPrezentationState extends State<BookPrezentation> {
                       },
                         icon: Icon(Icons.thumb_down_alt_outlined)),
                     Text(book.hateCount.toString()),
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: TextFormField(
+                        controller: commentController,
+                        decoration: const InputDecoration(
+                          labelText: 'Napisz swój komentarz',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    IconButton(onPressed: (){
+                      print("com");
+                      _bookServise.addComment(book.id, commentController.text);
+                    },
+                        icon: Icon(Icons.add_circle, size: 35,)),
                   ],
                 ),
               ],

@@ -42,7 +42,8 @@ class _BookPrezentationViewState extends State<BookPrezentationView> {
                 ),
               ),
               SizedBox(width: 15,),
-              IconButton(onPressed: (){},
+              IconButton(onPressed: (){
+              },
                   icon: Icon(Icons.add_circle, size: 35,)),
             ],
           ),
