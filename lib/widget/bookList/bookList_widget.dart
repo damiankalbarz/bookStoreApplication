@@ -38,12 +38,26 @@ class _BookListState extends State<BookList> {
               }
 
               if (state is BookListLoadedState) {
-                List<Book> bookList = state.books;
+                List<Book> noFilterbookList = state.books;
+                List<Book> bookList = [];
                 Set<String> category = {};
                 category.add('All');
-                for(Book book in bookList){
+
+                for(Book book in noFilterbookList){
                   category.add(book.category);
                 }
+
+                if(selectedCategory == "All"){
+                  bookList =noFilterbookList;
+                }
+                else{
+                  noFilterbookList.forEach((element) {if(element.category==selectedCategory){
+                    bookList.add(element);
+                  }
+                  });
+                }
+
+
                 return Container(child:
                 Column(children: [
                   Container(child:
@@ -83,8 +97,7 @@ class _BookListState extends State<BookList> {
                             )
                         );
                       }),),
-                ]
-                  ,
+                ],
                 )
                 );
               }
